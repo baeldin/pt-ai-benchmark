@@ -24,6 +24,7 @@ Please see outputs to evaluate quality.
 | 7   | Qwen3.8-27B (low)     | UD-Q8_K_XL | pi (no extensions)                 | ↑17k ↓47k    | 25.2%/256k          | [Details](#7-qwen38-27b-low-pi)     | ✅            | ✅             | ✅             | ✅            | [Output](/qwen3.8-27B-Q8-low/)      |
 | 8   | Qwen3.8-27B (low)     | UD-Q8_K_XL | DeepSeek Harness (default plugins) | ↑2.8m ↓95.6k | 37.3%/256k          | [Details](#8-qwen38-27b-low-dsh)    | ✅            | ✅             | ✅             | ✅            | [Output](/qwen3.8-27B-Q8-low-dsh/)  |
 | 9   | Claude Opus 5         | -          | Ultracode                          | -            | -                   | -                                   | ✅            | ✅             | ✅             | ✅            | [Output](/Claude-Opus-5-Ultracode/) |
+| 10  | Qwen3.8-Flash-Next    | UD-IQ4_XS  | pi (no extensions)                 | ↑162k ↓67k   | 36.2%/256k          | [Details](#10-qwen38-flash-next)    | ✅            | ✅             | ✅             | ✅            | [Output](/qwen3.8-flash-next/)      |
 
 ## Failed attempts
 
@@ -143,3 +144,14 @@ Note: Input token count is very big, I think dsh is counting that in a different
 ### 9 Claude Opus 5 (Ultracode)
 
 Note: Arguably failed the "concisely-commented" requirement, Opus 5 feels verbose in general. Thanks to lycium for the run.
+
+### 10 Qwen3.8-Flash-Next
+
+```ini
+temperature = 1.0
+top-p = 0.95
+top-k = 20
+min-p = 0.0
+```
+
+Note: The agent produced working code and rendered image after just 17k generated tokens. Then proceeded to validate with vision, fix bugs, "decorate" the scene aesthetically, produce documentation etc. It even noticed that the wall's shading is off and pointed out the rendering bug. Overall very satisfied, beats the 27B model by a big margin in all aspects.
